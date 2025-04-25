@@ -1,12 +1,23 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
+import { Component, inject } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, MatButtonModule, MatDialogModule, RouterLink],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'ngrx-crud';
+  readonly addEmployeeDialog = inject(MatDialog);
+
+  addEmployee(): void {
+    this.addEmployeeDialog.open(AddEmployeeComponent, {
+      width: '500px',
+      exitAnimationDuration: '1000ms',
+      enterAnimationDuration: '1000ms',
+    });
+  }
 }
