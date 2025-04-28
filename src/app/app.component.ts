@@ -3,6 +3,7 @@ import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { PopupService } from './services/popup.service';
 
 @Component({
   selector: 'app-root',
@@ -11,13 +12,9 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  readonly addEmployeeDialog = inject(MatDialog);
+  private readonly popupService = inject(PopupService);
 
   addEmployee(): void {
-    this.addEmployeeDialog.open(AddEmployeeComponent, {
-      width: '500px',
-      exitAnimationDuration: '1000ms',
-      enterAnimationDuration: '1000ms',
-    });
+    this.popupService.openPopup();
   }
 }

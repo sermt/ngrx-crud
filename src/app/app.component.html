@@ -4,16 +4,15 @@
       <li>
         <a routerLink="/employee">Employee</a>
       </li>
-      <li>
-        <button mat-raised-button color="primary" (click)="addEmployee()">
-          Add Employee
-        </button>
-      </li>
     </ul>
   </nav>
 </header>
 
 <main>
+  <button mat-raised-button color="primary" (click)="addEmployee()">
+    Add Employee
+  </button>
+
   <router-outlet></router-outlet>
 </main>
 
